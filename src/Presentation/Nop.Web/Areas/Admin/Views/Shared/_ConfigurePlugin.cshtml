@@ -53,10 +53,10 @@
     else if (plugin is ITaxProvider)
     {
         //tax provider
-        activeMenuSystemName = "Tax providers";
+        activeMenuSystemName = "Tax";
         configureLocale = "Admin.Configuration.Tax.Providers.Configure";
         backToLocale = "Admin.Configuration.Tax.Providers.BackToList";
-        listActionMethodName = "Providers";
+        listActionMethodName = "TaxConfiguration";
         listControllerName = "Tax";
     }
     else if (plugin is IExternalAuthenticationMethod)
