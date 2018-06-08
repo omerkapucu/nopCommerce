@@ -88,7 +88,17 @@ namespace Nop.Web.Areas.Admin.Controllers
 
         public virtual IActionResult Index()
         {
-            return RedirectToAction("List");
+            return RedirectToAction("Plugins");
+        }
+
+        public virtual IActionResult Plugins()
+        {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManagePlugins))
+                return AccessDeniedView();
+
+            var model = _pluginModelFactory.PreparePluginsConfigurationModel(new PluginsConfigurationModel());
+
+            return View(model);
         }
 
         public virtual IActionResult List()
@@ -125,7 +135,7 @@ namespace Nop.Web.Areas.Admin.Controllers
                 if (archivefile == null || archivefile.Length == 0)
                 {
                     ErrorNotification(_localizationService.GetResource("Admin.Common.UploadFile"));
-                    return RedirectToAction("List");
+                    return RedirectToAction("Plugins");
                 }
 
                 var descriptors = _uploadService.UploadPluginsAndThemes(archivefile);
@@ -163,7 +173,7 @@ namespace Nop.Web.Areas.Admin.Controllers
                 ErrorNotification(exc);
             }
 
-            return RedirectToAction("List");
+            return RedirectToAction("Plugins");
         }
 
         [HttpPost, ActionName("List")]
@@ -184,11 +194,11 @@ namespace Nop.Web.Areas.Admin.Controllers
                 var pluginDescriptor = _pluginFinder.GetPluginDescriptorBySystemName(systemName, LoadPluginsMode.All);
                 if (pluginDescriptor == null)
                     //No plugin found with the specified id
-                    return RedirectToAction("List");
+                    return RedirectToAction("Plugins");
 
                 //check whether plugin is not installed
                 if (pluginDescriptor.Installed)
-                    return RedirectToAction("List");
+                    return RedirectToAction("Plugins");
 
                 //install plugin
                 pluginDescriptor.Instance().Install();
@@ -207,7 +217,7 @@ namespace Nop.Web.Areas.Admin.Controllers
                 ErrorNotification(exc);
             }
 
-            return RedirectToAction("List");
+            return RedirectToAction("Plugins");
         }
 
         [HttpPost, ActionName("List")]
@@ -228,11 +238,11 @@ namespace Nop.Web.Areas.Admin.Controllers
                 var pluginDescriptor = _pluginFinder.GetPluginDescriptorBySystemName(systemName, LoadPluginsMode.All);
                 if (pluginDescriptor == null)
                     //No plugin found with the specified id
-                    return RedirectToAction("List");
+                    return RedirectToAction("Plugins");
 
                 //check whether plugin is installed
                 if (!pluginDescriptor.Installed)
-                    return RedirectToAction("List");
+                    return RedirectToAction("Plugins");
 
                 //uninstall plugin
                 pluginDescriptor.Instance().Uninstall();
@@ -251,7 +261,7 @@ namespace Nop.Web.Areas.Admin.Controllers
                 ErrorNotification(exc);
             }
 
-            return RedirectToAction("List");
+            return RedirectToAction("Plugins");
         }
 
         [HttpPost, ActionName("List")]
@@ -271,7 +281,7 @@ namespace Nop.Web.Areas.Admin.Controllers
 
                 var pluginDescriptor = _pluginFinder.GetPluginDescriptorBySystemName(systemName, LoadPluginsMode.All);
                 if (!PluginManager.DeletePlugin(pluginDescriptor))
-                    return RedirectToAction("List");
+                    return RedirectToAction("Plugins");
 
                 //activity log
                 _customerActivityService.InsertActivity("DeletePlugin",
@@ -287,7 +297,7 @@ namespace Nop.Web.Areas.Admin.Controllers
                 ErrorNotification(exc);
             }
 
-            return RedirectToAction("List");
+            return RedirectToAction("Plugins");
         }
 
         [HttpPost, ActionName("List")]
@@ -300,7 +310,7 @@ namespace Nop.Web.Areas.Admin.Controllers
             //restart application
             _webHelper.RestartAppDomain();
 
-            return RedirectToAction("List");
+            return RedirectToAction("Plugins");
         }
 
         public virtual IActionResult EditPopup(string systemName)
@@ -311,7 +321,7 @@ namespace Nop.Web.Areas.Admin.Controllers
             //try to get a plugin with the specified system name
             var pluginDescriptor = _pluginFinder.GetPluginDescriptorBySystemName(systemName, LoadPluginsMode.All);
             if (pluginDescriptor == null)
-                return RedirectToAction("List");
+                return RedirectToAction("Plugins");
 
             //prepare model
             var model = _pluginModelFactory.PreparePluginModel(null, pluginDescriptor);
@@ -328,7 +338,7 @@ namespace Nop.Web.Areas.Admin.Controllers
             //try to get a plugin with the specified system name
             var pluginDescriptor = _pluginFinder.GetPluginDescriptorBySystemName(model.SystemName, LoadPluginsMode.All);
             if (pluginDescriptor == null)
-                return RedirectToAction("List");
+                return RedirectToAction("Plugins");
 
             if (ModelState.IsValid)
             {

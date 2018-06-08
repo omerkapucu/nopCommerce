@@ -7,7 +7,7 @@
     //page title
     ViewBag.Title = T("Admin.Configuration.Plugins.Local").Text;
     //active menu item (system name)
-    Html.SetActiveMenuItemSystemName("Local plugins");
+    Html.SetActiveMenuItemSystemName("Plugins");
 }
 
 <form asp-controller="Plugin" asp-action="List" method="post" id="plugins-form">
@@ -37,14 +37,14 @@
             <script>
                 $(document).ready(function () {
                     //install a plugin
-                    $("#plugins-grid").on("click", ".install-plugin-link", function (e) {
+                    $("#plugins-local-grid").on("click", ".install-plugin-link", function (e) {
                         $("html, body").animate({ scrollTop: 0 }, 400);
                         showThrobber('@Html.Raw(JavaScriptEncoder.Default.Encode(T("Admin.Configuration.Plugins.Fields.Install.Progress").Text))');
                         return true;
                     });
 
                     //uninstall a plugin
-                    $("#plugins-grid").on("click", ".uninstall-plugin-link", function (e) {
+                    $("#plugins-local-grid").on("click", ".uninstall-plugin-link", function (e) {
                         $("html, body").animate({ scrollTop: 0 }, 400);
                         showThrobber('@Html.Raw(JavaScriptEncoder.Default.Encode(T("Admin.Configuration.Plugins.Fields.Uninstall.Progress").Text))');
                         return true;
@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-8 col-md-offset-4">
-                                        <button type="button" id="search-plugins" class="btn btn-primary btn-search">
+                                        <button type="button" id="search-plugins-local" class="btn btn-primary btn-search">
                                             <i class="fa fa-search"></i>
                                             @T("Admin.Common.Search")
                                         </button>
@@ -107,11 +107,11 @@
 
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <div id="plugins-grid"></div>
+                        <div id="plugins-local-grid"></div>
 
                         <script>
                             $(document).ready(function () {
-                                $("#plugins-grid").kendoGrid({
+                                $("#plugins-local-grid").kendoGrid({
                                     dataSource: {
                                         type: "json",
                                         transport: {
@@ -246,7 +246,7 @@
                             $(document).ready(function () {
                                 $('#btnRefresh').click(function () {
                                     //refresh grid
-                                    var grid = $("#plugins-grid").data('kendoGrid');
+                                    var grid = $("#plugins-local-grid").data('kendoGrid');
                                     grid.dataSource.read();
 
                                     //return false to don't reload a page
@@ -258,9 +258,9 @@
                         <script>
                             $(document).ready(function () {
                                 //search button
-                                $('#search-plugins').click(function () {
+                                $('#search-plugins-local').click(function () {
                                     //search
-                                    var grid = $('#plugins-grid').data('kendoGrid');
+                                    var grid = $('#plugins-local-grid').data('kendoGrid');
                                     grid.dataSource.read();
 
                                     return false;
