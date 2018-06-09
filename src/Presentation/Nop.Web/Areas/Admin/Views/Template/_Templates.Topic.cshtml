@@ -1,20 +1,20 @@
-@model ProductTemplateSearchModel
+@model TopicTemplateSearchModel
 
 @{
     //page title
-    ViewBag.Title = T("Admin.System.Templates.Product").Text;
+    ViewBag.Title = T("Admin.System.Templates.Topic").Text;
     //active menu item (system name)
-    Html.SetActiveMenuItemSystemName("Product templates");
+    Html.SetActiveMenuItemSystemName("Templates");
 }
 
 <nop-antiforgery-token />
 <div class="content-header clearfix">
     <h1 class="pull-left">
-        @T("Admin.System.Templates.Product")
+        @T("Admin.System.Templates.Topic")
     </h1>
     <div class="pull-right">
         &nbsp;
-        @await Component.InvokeAsync("AdminWidget", new { widgetZone = AdminWidgetZones.ProductTemplateListButtons })
+        @await Component.InvokeAsync("AdminWidget", new { widgetZone = AdminWidgetZones.TopicTemplateListButtons })
     </div>
 </div>
 
@@ -23,34 +23,34 @@
         <div class="panel-group">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div id="templates-grid"></div>
+                    <div id="templates-topic-grid"></div>
 
                     <script>
                         $(document).ready(function () {
-                            $("#templates-grid").kendoGrid({
+                            $("#templates-topic-grid").kendoGrid({
                                 dataSource: {
                                     type: "json",
                                     transport: {
                                         read: {
-                                            url: "@Html.Raw(Url.Action("ProductTemplates", "Template"))",
+                                            url: "@Html.Raw(Url.Action("TopicTemplates", "Template"))",
                                             type: "POST",
                                             dataType: "json",
                                             data: addAntiForgeryToken
                                         },
                                         create: {
-                                            url: "@Html.Raw(Url.Action("ProductTemplateAdd", "Template"))",
+                                            url: "@Html.Raw(Url.Action("TopicTemplateAdd", "Template"))",
                                             type: "POST",
                                             dataType: "json",
                                             data: addAntiForgeryToken
                                         },
                                         update: {
-                                            url: "@Html.Raw(Url.Action("ProductTemplateUpdate", "Template"))",
+                                            url: "@Html.Raw(Url.Action("TopicTemplateUpdate", "Template"))",
                                             type: "POST",
                                             dataType: "json",
                                             data: addAntiForgeryToken
                                         },
                                         destroy: {
-                                            url: "@Html.Raw(Url.Action("ProductTemplateDelete", "Template"))",
+                                            url: "@Html.Raw(Url.Action("TopicTemplateDelete", "Template"))",
                                             type: "POST",
                                             dataType: "json",
                                             data: addAntiForgeryToken
@@ -66,7 +66,6 @@
                                                 Name: { editable: true, type: "string" },
                                                 ViewPath: { editable: true, type: "string" },
                                                 DisplayOrder: { editable: true, type: "number" },
-                                                IgnoredProductTypes: { editable: true, type: "string" },
                                                 Id: { editable: false, type: "number" }
                                             }
                                         }
@@ -99,22 +98,18 @@
                                 scrollable: false,
                                 columns: [{
                                     field: "Name",
-                                    title: "@T("Admin.System.Templates.Product.Name")",
+                                    title: "@T("Admin.System.Templates.Topic.Name")",
                                     width: 300
                                 }, {
                                     field: "ViewPath",
-                                    title: "@T("Admin.System.Templates.Product.ViewPath")",
+                                    title: "@T("Admin.System.Templates.Topic.ViewPath")",
                                     width: 300
                                 }, {
                                     field: "DisplayOrder",
-                                    title: "@T("Admin.System.Templates.Product.DisplayOrder")",
+                                    title: "@T("Admin.System.Templates.Topic.DisplayOrder")",
                                     //integer format
                                     format: "{0:0}",
                                     width: 100
-                                }, {
-                                    field: "IgnoredProductTypes",
-                                    title: "@T("Admin.System.Templates.Product.IgnoredProductTypes")",
-                                    width: 300
                                 }, {
                                     command: [{
                                         name: "edit",

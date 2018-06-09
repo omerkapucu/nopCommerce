@@ -4,7 +4,7 @@
     //page title
     ViewBag.Title = T("Admin.System.Templates.Category").Text;
     //active menu item (system name)
-    Html.SetActiveMenuItemSystemName("Category templates");
+    Html.SetActiveMenuItemSystemName("Templates");
 }
 
 <nop-antiforgery-token />
@@ -23,11 +23,11 @@
         <div class="panel-group">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div id="templates-grid"></div>
+                    <div id="templates-category-grid"></div>
 
                     <script>
                         $(document).ready(function () {
-                            $("#templates-grid").kendoGrid({
+                            $("#templates-category-grid").kendoGrid({
                                 dataSource: {
                                     type: "json",
                                     transport: {

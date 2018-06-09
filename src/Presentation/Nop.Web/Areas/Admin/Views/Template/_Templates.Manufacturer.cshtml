@@ -1,20 +1,20 @@
-@model TopicTemplateSearchModel
+@model ManufacturerTemplateSearchModel
 
 @{
     //page title
-    ViewBag.Title = T("Admin.System.Templates.Topic").Text;
+    ViewBag.Title = T("Admin.System.Templates.Manufacturer").Text;
     //active menu item (system name)
-    Html.SetActiveMenuItemSystemName("Topic templates");
+    Html.SetActiveMenuItemSystemName("Templates");
 }
 
 <nop-antiforgery-token />
 <div class="content-header clearfix">
     <h1 class="pull-left">
-        @T("Admin.System.Templates.Topic")
+        @T("Admin.System.Templates.Manufacturer")
     </h1>
     <div class="pull-right">
         &nbsp;
-        @await Component.InvokeAsync("AdminWidget", new { widgetZone = AdminWidgetZones.TopicTemplateListButtons })
+        @await Component.InvokeAsync("AdminWidget", new { widgetZone = AdminWidgetZones.ManufacturerTemplateListButtons })
     </div>
 </div>
 
@@ -23,34 +23,34 @@
         <div class="panel-group">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div id="templates-grid"></div>
+                    <div id="templates-manufacturer-grid"></div>
 
                     <script>
                         $(document).ready(function () {
-                            $("#templates-grid").kendoGrid({
+                            $("#templates-manufacturer-grid").kendoGrid({
                                 dataSource: {
                                     type: "json",
                                     transport: {
                                         read: {
-                                            url: "@Html.Raw(Url.Action("TopicTemplates", "Template"))",
+                                            url: "@Html.Raw(Url.Action("ManufacturerTemplates", "Template"))",
                                             type: "POST",
                                             dataType: "json",
                                             data: addAntiForgeryToken
                                         },
                                         create: {
-                                            url: "@Html.Raw(Url.Action("TopicTemplateAdd", "Template"))",
+                                            url: "@Html.Raw(Url.Action("ManufacturerTemplateAdd", "Template"))",
                                             type: "POST",
                                             dataType: "json",
                                             data: addAntiForgeryToken
                                         },
                                         update: {
-                                            url: "@Html.Raw(Url.Action("TopicTemplateUpdate", "Template"))",
+                                            url: "@Html.Raw(Url.Action("ManufacturerTemplateUpdate", "Template"))",
                                             type: "POST",
                                             dataType: "json",
                                             data: addAntiForgeryToken
                                         },
                                         destroy: {
-                                            url: "@Html.Raw(Url.Action("TopicTemplateDelete", "Template"))",
+                                            url: "@Html.Raw(Url.Action("ManufacturerTemplateDelete", "Template"))",
                                             type: "POST",
                                             dataType: "json",
                                             data: addAntiForgeryToken
@@ -98,15 +98,15 @@
                                 scrollable: false,
                                 columns: [{
                                     field: "Name",
-                                    title: "@T("Admin.System.Templates.Topic.Name")",
+                                    title: "@T("Admin.System.Templates.Manufacturer.Name")",
                                     width: 300
                                 }, {
                                     field: "ViewPath",
-                                    title: "@T("Admin.System.Templates.Topic.ViewPath")",
+                                    title: "@T("Admin.System.Templates.Manufacturer.ViewPath")",
                                     width: 300
                                 }, {
                                     field: "DisplayOrder",
-                                    title: "@T("Admin.System.Templates.Topic.DisplayOrder")",
+                                    title: "@T("Admin.System.Templates.Manufacturer.DisplayOrder")",
                                     //integer format
                                     format: "{0:0}",
                                     width: 100
