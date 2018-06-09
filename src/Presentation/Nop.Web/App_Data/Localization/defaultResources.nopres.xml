@@ -4068,6 +4068,9 @@
   <LocaleResource Name="Admin.Common.AreYouSure">
     <Value>Are you sure?</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Common.BulkEdit">
+    <Value>Bulk edit</Value>
+  </LocaleResource>
   <LocaleResource Name="Admin.Common.Cancel">
     <Value>Cancel</Value>
   </LocaleResource>

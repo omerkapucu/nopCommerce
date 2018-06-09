@@ -72,7 +72,11 @@
             <button type="button" id="delete-selected" class="btn bg-red">
                 <i class="fa fa-trash-o"></i>
                 @T("Admin.Common.Delete.Selected")
-            </button>
+            </button>            
+             <a asp-action="BulkEdit" class="btn bg-red">
+                <i class="fa fa-trash-o"></i>
+                @T("Admin.Common.BulkEdit")
+            </a>
             @await Component.InvokeAsync("AdminWidget", new { widgetZone = AdminWidgetZones.ProductListButtons })
         </div>
     </div>

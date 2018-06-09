@@ -1169,6 +1169,9 @@ set @resources='
   <LocaleResource Name="Admin.Configuration.Settings.Catalog.ShowLinkToAllResultInSearchAutoComplete.Hint">
     <Value>Determines whether the link to all results should be displayed in the autocomplete search box. Displayed if the number of items found is greater than the displayed quantity in the autocomplete box.</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Common.BulkEdit">
+    <Value>Bulk edit</Value>
+  </LocaleResource>
 </Language>
 '
 
