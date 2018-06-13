@@ -56,6 +56,23 @@ namespace Nop.Web.Areas.Admin.Factories
         #region Methods
 
         /// <summary>
+        /// Prepare blog content model
+        /// </summary>
+        /// <param name="blogContentModel">Blog content model</param>
+        /// <returns>Blog content model</returns>
+        public virtual BlogContentModel PrepareBlogContentModel(BlogContentModel blogContentModel)
+        {
+            if (blogContentModel == null)
+                throw new ArgumentNullException(nameof(blogContentModel));
+
+            //prepare nested search models
+            PrepareBlogPostSearchModel(blogContentModel.BlogPosts);
+            PrepareBlogCommentSearchModel(blogContentModel.BlogComments, new BlogPost());
+
+            return blogContentModel;
+        }
+
+        /// <summary>
         /// Prepare blog post search model
         /// </summary>
         /// <param name="searchModel">Blog post search model</param>

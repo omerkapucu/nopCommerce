@@ -8,6 +8,14 @@ namespace Nop.Web.Areas.Admin.Factories
     /// </summary>
     public partial interface IBlogModelFactory
     {
+
+        /// <summary>
+        /// Prepare blog content model
+        /// </summary>
+        /// <param name="blogContentModel">Blog content model</param>
+        /// <returns>Blog content model</returns>
+        BlogContentModel PrepareBlogContentModel(BlogContentModel blogContentModel);
+
         /// <summary>
         /// Prepare blog post search model
         /// </summary>
