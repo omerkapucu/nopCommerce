@@ -56,6 +56,23 @@ namespace Nop.Web.Areas.Admin.Factories
         #region Methods
 
         /// <summary>
+        /// Prepare news content model
+        /// </summary>
+        /// <param name="newsContentModel">News content model</param>
+        /// <returns>News content model</returns>
+        public virtual NewsContentModel PrepareNewsContentModel(NewsContentModel newsContentModel)
+        {
+            if (newsContentModel == null)
+                throw new ArgumentNullException(nameof(newsContentModel));
+
+            //prepare nested search models
+            PrepareNewsItemSearchModel(newsContentModel.NewsItems);
+            PrepareNewsCommentSearchModel(newsContentModel.NewsComments, new NewsItem());
+
+            return newsContentModel;
+        }
+
+        /// <summary>
         /// Prepare news item search model
         /// </summary>
         /// <param name="searchModel">News item search model</param>

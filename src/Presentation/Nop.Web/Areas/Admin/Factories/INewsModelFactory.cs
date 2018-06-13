@@ -9,6 +9,13 @@ namespace Nop.Web.Areas.Admin.Factories
     public partial interface INewsModelFactory
     {
         /// <summary>
+        /// Prepare news content model
+        /// </summary>
+        /// <param name="newsContentModel">News content model</param>
+        /// <returns>News content model</returns>
+        NewsContentModel PrepareNewsContentModel(NewsContentModel newsContentModel);
+        
+        /// <summary>
         /// Prepare news item search model
         /// </summary>
         /// <param name="searchModel">News item search model</param>
