@@ -4,10 +4,10 @@
     //page title
     ViewBag.Title = T("Admin.Configuration.ActivityLog.ActivityLogType").Text;
     //active menu item (system name)
-    Html.SetActiveMenuItemSystemName("Activity types");
+    Html.SetActiveMenuItemSystemName("Activity log");
 }
 
-<form asp-controller="ActivityLog" asp-action="SaveTypes" method="post">
+@*<form asp-controller="ActivityLog" asp-action="SaveTypes" method="post">*@
     <div class="content-header clearfix">
         <h1 class="pull-left">
             @T("Admin.Configuration.ActivityLog.ActivityLogType")
@@ -118,4 +118,4 @@
             </div>
         </div>
     </div>
-</form>
+@*</form>*@
