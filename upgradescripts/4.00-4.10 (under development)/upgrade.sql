@@ -1172,6 +1172,9 @@ set @resources='
   <LocaleResource Name="Admin.Common.BulkEdit">
     <Value>Bulk edit</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Reports">
+    <Value>Reports</Value>
+  </LocaleResource>
 </Language>
 '
 

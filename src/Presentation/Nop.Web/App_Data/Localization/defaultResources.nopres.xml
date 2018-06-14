@@ -12732,6 +12732,9 @@
   <LocaleResource Name="Admin.RecurringPayments.Updated">
     <Value>The payment has been updated successfully.</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Reports">
+    <Value>Reports</Value>
+  </LocaleResource>
   <LocaleResource Name="Admin.ReturnRequests">
     <Value>Return requests</Value>
   </LocaleResource>
