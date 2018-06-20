@@ -67,8 +67,10 @@
                                         var curAdditionalReview = Model.AddAdditionalProductReviewList.IndexOf(additionalReview);
                                         <div class="review-rating">
                                             <div class="name-description">
-                                                <lable class="tip">@Html.Raw(additionalReview.Name):@Html.Raw(additionalReview.Description)</lable>
-                                            </div>
+                                                <div class="tooltip">@Html.Raw(additionalReview.Name):
+                                                    <span class="tooltiptext">@Html.Raw(additionalReview.Description)</span>
+                                                </div>
+                                            </div>                                            
                                             <div class="label first">@T("Reviews.Fields.Rating.Bad")</div>
                                             <div class="rating-options">
                                                 <input asp-for="@Model.AddAdditionalProductReviewList[curAdditionalReview].ReviewTypeId" value="@(additionalReview.ReviewTypeId)" type="hidden" />

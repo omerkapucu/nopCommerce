@@ -960,7 +960,7 @@ set @resources='
     <Value>Add a new review type</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Settings.ReviewType.BackToList">
-    <Value>back to сatalog settings</Value>
+    <Value>back to catalog settings</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Settings.ReviewType.Deleted">
     <Value>The review type has been deleted successfully.</Value>
@@ -984,7 +984,7 @@ set @resources='
     <Value>Display order</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Settings.ReviewType.Fields.DisplayOrder.Hint">
-    <Value>The review type display order. 1 represents the first item in the list.</Value>
+    <Value>The review type display order. 1 represents the first item on the list.</Value>
   </LocaleResource> 
   <LocaleResource Name="Admin.Settings.ReviewType.Fields.IsRequired">
     <Value>Required</Value>

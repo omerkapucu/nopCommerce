@@ -2417,35 +2417,39 @@ label, label + * {
 .write-review .fieldset {
 	margin: 0 0 30px;
 }
-lable.tip {
-    border-bottom: 1px dashed;
-    text-decoration: none;
+
+.tooltip {    
+    position: initial;
+    display: inline-block;
+    border-bottom: 1px dotted black;
     color: #444;
 }
 
-lable.tip:hover {
-    cursor: help;
-    position: relative
-}
-
-lable.tip p {
-    display: none
-}
-
-lable.tip:hover p {
-    border: #c0c0c0 1px dotted;
-    padding: 10px 10px 5px 5px;
-    display: inline;
-    z-index: 100;
-    background: #f0f0f0 no-repeat 100% 5%;
-    left: 0px;
-    /*margin: 5px;*/
+.tooltip .tooltiptext {
+    visibility: hidden;
     width: auto;
+    background: #f0f0f0 no-repeat 100% 5%;
+    border: #c0c0c0 1px dotted;
+    text-align: right;    
+    padding: 10px 10px 5px 5px;
     position: absolute;
-    top: 10px;
-    text-align: right;
-    text-decoration: none
+    z-index: 1;    
+    left: 10%;    
+    opacity: 0;
+    transition: opacity 0.3s;
 }
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;    
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    cursor: help;
+}
+
 .write-review .review-rating {
     text-align: center;
     padding-top: 10px;
@@ -5337,7 +5341,7 @@ pre {
 }
 .write-review .review-rating div.name-description {
     width: 100%;
-    margin: 0 10px 0 0;
+    margin: 0 5px 0 0;
     text-align: center;
 }
 
@@ -5773,7 +5777,7 @@ pre {
 
 .write-review .review-rating div {
     display: inline-block;
-    margin: 0 5px 0 0;
+    margin: 0 0 0 5px;
     cursor: default;
     vertical-align: middle;
     font-size: 14px;
@@ -6675,7 +6679,7 @@ pre {
 
 .write-review .review-rating div.name-description {
     width: 265px;
-    margin: 0 10px 0 0;
+    margin: 0 5px 0 0;
     text-align: right
 }
 
@@ -7003,7 +7007,7 @@ pre {
 }
 
 .write-review .review-rating div.name-description {
-    margin: 0 10px 0 0;
+    margin: 0 5px 0 0;
     min-width: 375px;
 }
 
